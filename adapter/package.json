@@ -1,0 +1,22 @@
+{
+	"name": "adapter",
+	"version": "1.0.0",
+	"main": "src/Client.ts",
+	"scripts": {
+		"start": "tsx .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"devDependencies": {
+		"@types/node": "^20.12.11",
+		"tsx": "^4.9.3",
+		"typescript": "^5.4.5"
+	},
+	"dependencies": {
+		"axios": "^1.6.8",
+		"node-fetch": "^3.3.2"
+	}
+}
