@@ -1,15 +1,15 @@
 import { Request } from '../cor/types/Request';
-import { Handler } from '../cor/Handler';
 import { Response } from '../cor/types/Response';
+import { BaseHandler } from '../cor/BaseHandler';
 
 export type transportations = 'car' | 'ship' | 'airplane' | 'default';
 export type periods = 'night' | 'morning' | 'afternoon';
 
 export class TransportService {
-	private handler?: Handler<Request>;
+	private handler?: BaseHandler;
 
 
-	constructor(handler: Handler<Request>) {
+	constructor(handler: BaseHandler) {
 		this.handler = handler;
 	}
 

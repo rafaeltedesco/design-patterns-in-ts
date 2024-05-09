@@ -1,40 +1,17 @@
-import { Handler } from './Handler';
+import { transportations, periods } from '../services/TransportService';
+import { BaseHandler } from './BaseHandler';
 
 import { Request } from './types/Request';
-import { Response } from './types/Response';
 
-
-export class CarNightFare implements Handler<Request> {
-	nextHandler?: Handler<Request>;
+export class CarNightFare extends BaseHandler {
 	canHandle(request: Request): boolean {
-		return request.type === 'car' && request.period === 'night';
+		return request.period === 'night' && request.type === 'car';
 	}
-
-	setNext(handler: Handler<Request>): void {
-		this.nextHandler = handler;
-	}
-
-	hasNext(): boolean {
-		return !!this.nextHandler;
-	}
-	handle(request: Request): Response {
-		if (this.canHandle(request)) {
-			return {
-				type: request.type,
-				period: request.period,
-				total: request.data * 1.2
-			};
-		}
-		if (this.hasNext()) {
-			console.log(`[${CarNightFare.name}] não pode tratar. Chamando próximo...`);
-			return this.nextHandler!.handle(request);
-		}
-
+	execute(request: Request): { type: transportations; period: periods; total: number; } {
 		return {
-			type: 'default',
-			period: 'morning',
-			total: request.data
-		}
+			type: request.type,
+			period: request.period,
+			total: request.data * 1.2
+		};
 	}
-
 }

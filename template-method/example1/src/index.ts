@@ -12,6 +12,6 @@ import { ShipMorningFare } from './cor/ShipMoringFare';
 
 
 	const svc = new TransportService(handler1);
-	const total = svc.calculateFreight({ type: 'ship', period: 'morning', data: 10 });
+	const total = svc.calculateFreight({ type: 'car', period: 'night', data: 10 });
 	console.log(total);
 })()
