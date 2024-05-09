@@ -5,14 +5,30 @@ declare module 'http' {
 	export interface IncomingMessage {
 		body: any;
 	}
+}
 
+
+class Response extends http.ServerResponse {
+	res: http.ServerResponse;
+	constructor(req: http.IncomingMessage, res: http.ServerResponse) {
+		super(req);
+		this.res = res;
+	}
+	json(data: Object) {
+		console.log('calling json');
+		this.res.setHeader('Content-Type', 'application/json');
+		console.log('header was set')
+		this.res.write(JSON.stringify(data));
+		console.log('write');
+		this.res.end();
+	}
 }
 
 const handler = (req: http.IncomingMessage, res: http.ServerResponse) => {
+	const customRes = new Response(req, res);
 	if (req.method === 'GET' && req.url === '/users') {
-		res.writeHead(200, { 'Content-Type': 'application/json' });
-		res.write(JSON.stringify({ message: 'Hello from users' }));
-		res.end();
+		return customRes.json({ message: 'Hello from users' });
+
 	}
 	else if (req.method === 'POST' && req.url === '/users') {
 		let data = '';
