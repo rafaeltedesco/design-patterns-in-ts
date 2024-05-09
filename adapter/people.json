@@ -4,6 +4,11 @@
       "name": "Luke Skywalker",
       "height": "172",
       "gender": "male"
+    },
+    {
+      "name": "Luke Skywalker",
+      "height": "172",
+      "gender": "male"
     }
   ]
 }
