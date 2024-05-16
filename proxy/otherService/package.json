@@ -1,0 +1,25 @@
+{
+	"devDependencies": {
+		"@types/node": "^20.12.12",
+		"tsx": "^4.10.3",
+		"typescript": "^5.4.5"
+	},
+	"name": "otherservice",
+	"version": "1.0.0",
+	"main": "src/app.ts",
+	"dependencies": {
+		"esbuild": "^0.20.2",
+		"fsevents": "^2.3.3",
+		"get-tsconfig": "^4.7.5",
+		"resolve-pkg-maps": "^1.0.0",
+		"undici-types": "^5.26.5"
+	},
+	"scripts": {
+		"start": "tsx watch .",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"description": ""
+}
