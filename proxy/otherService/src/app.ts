@@ -56,16 +56,15 @@ const handleUsers = (req: http.IncomingMessage, res: http.ServerResponse) => {
 }
 
 const handler = (req: http.IncomingMessage, res: http.ServerResponse) => {
-
 	const now = new Date().getTime();
 	if (now <= (window.windowStart + window.windowSize)) {
 		if (window.requests.length >= window.maxRequests) {
 			return handleTooManyRequests(res);
 		}
+		// naive implementation considering only one unique local user
 		window.requests.push({ url: req.url, method: req.method, ip: req.socket.remoteAddress })
 		return handleUsers(req, res);
 	} else {
-		console.log('Cleaning window...');
 		window = {
 			...window,
 			windowStart: new Date().getTime(),
