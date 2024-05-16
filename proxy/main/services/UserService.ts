@@ -1,7 +1,8 @@
 import { URL } from 'url';
 import { Api } from '../utils/Api';
+import { IUserService } from './IUserService';
 
-export class UserService {
+export class UserService implements IUserService {
 
 	private api: Api = new Api();
 
